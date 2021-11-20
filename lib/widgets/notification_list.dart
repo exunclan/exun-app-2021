@@ -14,13 +14,56 @@ class _NotificationListState extends State<NotificationList> {
   Widget build(BuildContext context) {
     return ListView(
       children: const [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 38.0),
-          child: NotificationTile(
-              heading: "Exun 2021",
-              time: 21,
-              content: "Lorem ipsum dolor sit amet constectuer init"),
-        )
+        NotificationTile(
+          heading: "Exun 2021",
+          time: 21,
+          content: "Lorem ipsum dolor sit amet constectuer init",
+        ),
+        NotificationTile(
+          heading: "Exun 2021",
+          time: 21,
+          content: "Lorem ipsum dolor sit amet constectuer init",
+        ),
+        NotificationTile(
+          heading: "Exun 2021",
+          time: 21,
+          content: "Lorem ipsum dolor sit amet constectuer init",
+        ),
+        NotificationTile(
+          heading: "Exun 2021",
+          time: 21,
+          content: "Lorem ipsum dolor sit amet constectuer init",
+        ),
+        NotificationTile(
+          heading: "Exun 2021",
+          time: 21,
+          content: "Lorem ipsum dolor sit amet constectuer init",
+        ),
+        NotificationTile(
+          heading: "Exun 2021",
+          time: 21,
+          content: "Lorem ipsum dolor sit amet constectuer init",
+        ),
+        NotificationTile(
+          heading: "Exun 2021",
+          time: 21,
+          content: "Lorem ipsum dolor sit amet constectuer init",
+        ),
+        NotificationTile(
+          heading: "Exun 2021",
+          time: 21,
+          content: "Lorem ipsum dolor sit amet constectuer init",
+        ),
+        NotificationTile(
+          heading: "Exun 2021",
+          time: 21,
+          content: "Lorem ipsum dolor sit amet constectuer init",
+        ),
+        NotificationTile(
+          heading: "Exun 2021",
+          time: 21,
+          content: "Lorem ipsum dolor sit amet constectuer init",
+        ),
       ],
     );
   }

@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 20.0,
+          height: 10.0,
         ),
         Expanded(child: NotificationList()),
       ],
