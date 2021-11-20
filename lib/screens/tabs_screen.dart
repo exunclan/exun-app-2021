@@ -66,7 +66,7 @@ class _TabsScreenState extends State<TabsScreen> {
           style: Theme.of(context).textTheme.headline6,
         ),
         toolbarHeight: 100,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,
       ),
