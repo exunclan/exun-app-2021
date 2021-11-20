@@ -14,6 +14,6 @@
   - [ ] Listing with Dummy Data
   - [ ] Get data from API
 - [ ] About Screen
-  - [ ] Setup Screen
+  - [x] Setup Screen
   - [ ] Add right links
   - [ ] Add right sponsor images
