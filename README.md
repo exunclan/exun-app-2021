@@ -1,16 +1,19 @@
 # exun_app_21
 
-A new Flutter project.
+## Todo
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [x] Setup App
+- [ ] Home Screen
+  - [x] Notification Listing (Dummy Data)
+  - [ ] Notification Listing (Fetch Data from API)
+- [ ] Schedule Screen
+  - [ ] Listing with Dummy Data
+  - [ ] Setting up Schedule data on a backend (can use raw github content like last year)
+  - [ ] Fetch schedule data
+- Leaderboard
+  - [ ] Listing with Dummy Data
+  - [ ] Get data from API
+- About Screen
+  - [ ] Setup Screen
+  - [ ] Add right links
+  - [ ] Add right sponsor images
