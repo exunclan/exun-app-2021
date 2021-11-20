@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.exunclan.exun_app_21">
+   <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="exun_app_21"
+        android:label="Exun 2021"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
