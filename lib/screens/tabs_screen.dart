@@ -1,5 +1,6 @@
-import 'package:exun_app_21/screens/home_screen.dart';
 import 'package:flutter/material.dart';
+import './home_screen.dart';
+import './about_screen.dart';
 
 class TabsScreen extends StatefulWidget {
   const TabsScreen({Key? key}) : super(key: key);
@@ -38,8 +39,8 @@ class _TabsScreenState extends State<TabsScreen> {
       icon: Icons.leaderboard,
     ),
     Page(
-      page: const HomeScreen(),
-      title: "About",
+      page: const AboutScreen(),
+      title: "About us",
       icon: Icons.info,
     ),
   ];
