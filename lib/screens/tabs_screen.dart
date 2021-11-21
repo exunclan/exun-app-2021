@@ -1,3 +1,4 @@
+import '../firebase_notification_handler.dart';
 import 'package:flutter/material.dart';
 import './home_screen.dart';
 import './about_screen.dart';
@@ -49,6 +50,7 @@ class _TabsScreenState extends State<TabsScreen> {
   @override
   void initState() {
     super.initState();
+    FirebaseNotifications().setUpFirebase();
   }
 
   void _selectPage(int index) {

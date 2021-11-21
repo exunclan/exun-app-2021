@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "840508395225",
+    "project_id": "flutterexun2021",
+    "storage_bucket": "flutterexun2021.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:840508395225:android:b24eebfbc303c74f9338c8",
+        "android_client_info": {
+          "package_name": "com.exunclan.exun_app_21"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "840508395225-m708kv5844hrphksi9kgmhl6c7cffvpc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpWaiFMywCEQUbbakiJ9iklSkger_f8gE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "840508395225-m708kv5844hrphksi9kgmhl6c7cffvpc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
