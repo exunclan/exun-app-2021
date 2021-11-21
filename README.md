@@ -3,9 +3,9 @@
 ## Todo
 
 - [x] Setup App
-- [ ] Home Screen
+- [x] Home Screen
   - [x] Notification Listing (Dummy Data)
-  - [ ] Notification Listing (Fetch Data from API)
+  - [x] Notification Listing (Fetch Data from API)
 - [ ] Schedule Screen
   - [ ] Listing with Dummy Data
   - [ ] Setting up Schedule data on a backend (can use raw github content like last year)
