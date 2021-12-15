@@ -6,10 +6,10 @@
 - [x] Home Screen
   - [x] Notification Listing (Dummy Data)
   - [x] Notification Listing (Fetch Data from API)
-- [ ] Schedule Screen
-  - [ ] Listing with Dummy Data
-  - [ ] Setting up Schedule data on a backend (can use raw github content like last year)
-  - [ ] Fetch schedule data
+- [x] Schedule Screen
+  - [x] Listing with Dummy Data
+  - [x] Setting up Schedule data on a backend (using raw github content like last year)
+  - [x] Fetch schedule data
 - [ ] Leaderboard
   - [ ] Listing with Dummy Data
   - [ ] Get data from API
