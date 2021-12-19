@@ -36,11 +36,11 @@ class _TabsScreenState extends State<TabsScreen> {
       title: "Schedule",
       icon: Icons.calendar_today,
     ),
-    Page(
-      page: const HomeScreen(),
-      title: "Leaderboard",
-      icon: Icons.leaderboard,
-    ),
+    // Page(
+    //   page: const HomeScreen(),
+    //   title: "Leaderboard",
+    //   icon: Icons.leaderboard,
+    // ),
     Page(
       page: const AboutScreen(),
       title: "About us",

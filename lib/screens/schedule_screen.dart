@@ -7,13 +7,18 @@ class ScheduleScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // DateTime now = new DateTime.now();
+    // DateFormat formatter = DateFormat('dd MM yyyy');
+    // final String formatted = formatter.format(now);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
+      children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 38.0),
           child: Text(
-            "Today is ", //todo: get current date
+            "Today is ",
+            // "Today is $formatted", //todo: get current date
             style: TextStyle(
               fontSize: 17.0,
               fontWeight: FontWeight.bold,
@@ -28,4 +33,5 @@ class ScheduleScreen extends StatelessWidget {
       ],
     );
   }
+
 }
