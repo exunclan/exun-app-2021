@@ -126,9 +126,22 @@ class _NotificationListState extends State<NotificationList> {
                       Notification notif = _notifications[index];
                       DateTime y = DateTime.now();
                       int ago = y.difference(notif.createdAt).inHours;
+                      String time;
+                      if (ago>=24){
+                        ago=(ago~/24);
+                        if (ago==1){
+                          time = "$ago day ago";
+                        }
+                        else{
+                          time = "$ago days ago";
+                        }
+                      }
+                      else{
+                        time = "$ago hrs ago";
+                      }
                       return NotificationTile(
                         heading: notif.title,
-                        time: ago,
+                        time: time,
                         content: notif.message,
                         subtitle: notif.subtitle,
                       );

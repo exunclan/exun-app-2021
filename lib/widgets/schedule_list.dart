@@ -109,10 +109,11 @@ class _ScheduleListState extends State<ScheduleList> {
           itemBuilder: (BuildContext context, int index) {
             Schedule schedule = _schedules[index];
             DateTime y = DateTime.now();
-            int ago = y.difference(schedule.date).inHours;  //todo: change date format
+            int ago = y.difference(schedule.date).inHours; //todo: change date format
+            String time = "$ago days ago";
             return NotificationTile(
               heading: schedule.name,
-              time: ago,
+              time: time,
               content: schedule.info,
               subtitle: schedule.timing,
             );

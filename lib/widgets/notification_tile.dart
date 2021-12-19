@@ -5,7 +5,7 @@ import '../constants.dart';
 class NotificationTile extends StatelessWidget {
   final String heading;
   final String? subtitle;
-  final int time;
+  final String time;
   final String content;
 
   const NotificationTile({
@@ -37,7 +37,7 @@ class NotificationTile extends StatelessWidget {
           leading: Image.asset('assets/circuit.png'),
           title: Text(heading),
           subtitle: Text(
-            "$time hrs ago\n$content",
+            "$time \n$content",
             style: const TextStyle(
               color: KColors.bodyText,
               fontSize: 13.0,
