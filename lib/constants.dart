@@ -13,7 +13,9 @@ const String devUrl = '192.168.0.191:3000';
 const String prodUrl = 'notifs.exun.co';
 const String baseUrl = development ? devUrl : prodUrl;
 const String getNotifsUrl = "/notifications/list/all";
-const String getScheduleUrl = "https://raw.githubusercontent.com/navgarg/ExunEvents2021/main/events.json";
+//const String getScheduleUrl = "https://raw.githubusercontent.com/navgarg/ExunEvents2021/main/events.json";
+const String getScheduleUrl = "https://raw.githubusercontent.com/navgarg/ExunEvents/main/events.json";
+
 
 Uri generateUrl(String path) {
   return development ? Uri.http(baseUrl, path) : Uri.https(baseUrl, path);
