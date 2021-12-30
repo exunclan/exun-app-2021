@@ -56,7 +56,7 @@ class _ScheduleListState extends State<ScheduleList> {
     });
   }
 
-  Future<void> fetchSchedule() async {
+  Future<List<Schedule>> fetchSchedule() async {
     print(_scheduleLoaded);
     if (!_scheduleLoaded) {
       try {
@@ -88,7 +88,9 @@ class _ScheduleListState extends State<ScheduleList> {
         setState(() {});
       }
     }
+    return _schedules;
   }
+
 
   @override
   Widget build(BuildContext context) {

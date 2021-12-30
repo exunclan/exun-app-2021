@@ -62,7 +62,7 @@ class _NotificationListState extends State<NotificationList> {
     });
   }
 
-  Future<void> fetchNotifs() async {
+   Future<void> fetchNotifs() async {
     // await openBox();
     print(_notifLoaded);
     if (!_notifLoaded) {
