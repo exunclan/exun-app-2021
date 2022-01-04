@@ -4,6 +4,7 @@ import 'package:exun_app_21/constants.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 import 'notification_tile.dart';
 
@@ -106,22 +107,71 @@ class _ScheduleListState extends State<ScheduleList> {
           _scheduleLoaded = false;
           return fetchSchedule();
         },
-        child: ListView.builder(
-          itemCount: _schedules.length,
-          itemBuilder: (BuildContext context, int index) {
-            Schedule schedule = _schedules[index];
-            DateTime y = DateTime.now();
-            int ago = y.difference(schedule.date).inHours; //todo: change date format
-            String time = "$ago days ago";
-            return NotificationTile(
-              heading: schedule.name,
-              time: time,
-              content: schedule.info,
-              subtitle: schedule.timing,
-            );
-          },
-        ),
+        child: SfCalendar(
+          view: CalendarView.schedule,
+          onTap: calendarTapped,
+          headerHeight: 0,
+          dataSource: ScheduleDataSource(_schedules),
+          //dataSource: ScheduleDataSource(_getDataSource()),
+          scheduleViewSettings: ScheduleViewSettings(
+              appointmentItemHeight: 50,
+              hideEmptyScheduleWeek: true,
+          ),
+          monthViewSettings: const MonthViewSettings(
+              appointmentDisplayMode: MonthAppointmentDisplayMode.indicator),
+        )
+        // child: ListView.builder(
+        //   itemCount: _schedules.length,
+        //   itemBuilder: (BuildContext context, int index) {
+        //     Schedule schedule = _schedules[index];
+        //     DateTime y = DateTime.now();
+        //     int ago = y.difference(schedule.date).inHours; //todo: change date format
+        //     String time = "$ago days ago";
+        //     return NotificationTile(
+        //       heading: schedule.name,
+        //       time: time,
+        //       content: schedule.info,
+        //       subtitle: schedule.timing,
+        //     );
+        //   },
+        // ),
       ),
     );
+  }
+
+  void calendarTapped(CalendarTapDetails details) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Container(child: new Text('subject')),
+          content: Container(
+            height: 50,
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Text("content",
+                        style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16)),
+                  ],
+                )
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            new FlatButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: new Text('close'))
+          ],
+        );
+      },
+    );
+  }
+}
+class ScheduleDataSource extends CalendarDataSource {
+  ScheduleDataSource(List<Schedule> source) {
+    appointments = source;
   }
 }
