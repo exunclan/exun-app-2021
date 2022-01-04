@@ -29,88 +29,87 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
         )
             : RefreshIndicator(
           onRefresh: () {
-            return fetchSchedule();
-          }, child: FutureBuilder(
-          future: fetchSchedule(),
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            print("snapshot");
-            print(snapshot.data);
-            if (snapshot.data != null) {
-              return SafeArea(
-                child: Container(
-                    child: SfCalendar(
-                      onTap: calendarTapped,
-                      view: CalendarView.schedule,
-                  scheduleViewSettings: ScheduleViewSettings(
-                      appointmentItemHeight: 50,
-                      hideEmptyScheduleWeek: true,
-                    ),
-                    monthViewSettings: const MonthViewSettings(
-                        appointmentDisplayMode: MonthAppointmentDisplayMode.indicator),
-                      dataSource: ScheduleDataSource(snapshot.data),
-                    )),
-              );
-            } else {
-              return Container(
-                child: Center(
-                  child: Text('error'),
-                ),
-              );
-            }
-          },
+              return fetchSchedule();
+                 }, child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 25.0),
+                     child: FutureBuilder(
+                       future: fetchSchedule(),
+                       builder: (BuildContext context, AsyncSnapshot snapshot) {
+                         if (snapshot.data != null) {
+                           return SafeArea(
+                             child: Container(
+                                 child: SfCalendar(
+                                   onTap: calendarTapped,
+                                   view: CalendarView.schedule,
+                                   scheduleViewSettings: ScheduleViewSettings(
+                                     appointmentItemHeight: 60,
+                                     hideEmptyScheduleWeek: true,
+                                   ),
+                                   dataSource: ScheduleDataSource(snapshot.data),
+                                 )
+                             ),
+                           );
+                         } else {
+                           return Container(
+                             child: Center(
+                               child: Text(''),
+                             ),
+                           );
+                         }
+                         },
+                     ),
         ),
         ),
     );
-          // child: SfCalendar(
-        //   view: CalendarView.schedule,
-        //   onTap: calendarTapped,
-        //   headerHeight: 0,
-        //   dataSource: ScheduleDataSource(list), //todo: get list of schedules
-        //   //dataSource: ScheduleDataSource(_getDataSource()),
-        //   scheduleViewSettings: ScheduleViewSettings(
-        //     appointmentItemHeight: 50,
-        //     hideEmptyScheduleWeek: true,
-        //   ),
-        //   monthViewSettings: const MonthViewSettings(
-        //       appointmentDisplayMode: MonthAppointmentDisplayMode.indicator),
   }
 
   void calendarTapped(CalendarTapDetails details) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Container(child: new Text('subject')),
-          content: Container(
-            height: 50,
-            child: Column(
-              children: <Widget>[
-                Row(
+    if (details.targetElement == CalendarElement.appointment ||
+        details.targetElement == CalendarElement.agenda) {
+      final Schedule appointmentDetails = details.appointments![0];
+     String _subject = appointmentDetails.eventName;
+     String _content = appointmentDetails.content;
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Container(child: new Text('$_subject')),
+              content: Container(
+                height: 145,
+                child: Column(
                   children: <Widget>[
-                    Text("content",
-                        style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16)),
+                    Row(
+                      children: <Widget>[
+                        Expanded(
+                            child: new Text(
+                              '$_content',
+                              // overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 16,
+                              ),
+                            ),
+                         )
+                      ],
+                    ),
                   ],
-                )
+                ),
+              ),
+              actions: <Widget>[
+                new FlatButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: new Text('close'))
               ],
-            ),
-          ),
-          actions: <Widget>[
-            new FlatButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: new Text('close'))
-          ],
-        );
-      },
-    );
+            );
+          });
+    }
+  }
   }
 
   Future<List<Schedule>> fetchSchedule() async {
     print("fetch");
-    // bool _scheduleLoaded = false;
-    // print(_scheduleLoaded);
-    // if (!_scheduleLoaded) {
       try {
         var uri = Uri.parse(getScheduleUrl);
         print(uri);
@@ -128,18 +127,14 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
           Schedule y = b;
           return y.date.compareTo(x.date);
         });
-        // _scheduleLoaded = true;
       } catch (e) {
         _schedules = [];
         print("error");
         print(e);
         print("error");
-        // _scheduleLoaded = true;
       }
-    // }
     return _schedules;
   }
-}
 
 class ScheduleDataSource extends CalendarDataSource {
   ScheduleDataSource(List<Schedule> source) {
@@ -161,10 +156,10 @@ class ScheduleDataSource extends CalendarDataSource {
     return _getSchedule(index).eventName;
   }
 
-  @override
-  Color getColor(int index){
-    return Color(0xFF2977f5);
-  }
+  // @override
+  // Color getColor(int index){
+  //   return Color(0xFF2977f5); //todo: change colors
+  // }
 
   String getContent(int index) {
     return _getSchedule(index).content;
