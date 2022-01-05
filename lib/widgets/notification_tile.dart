@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:exun_app_21/widgets/notification_dialog.dart';
 import 'package:flutter/material.dart';
 import '../constants.dart';
@@ -35,7 +37,10 @@ class NotificationTile extends StatelessWidget {
         },
         child: ListTile(
           leading: Image.asset('assets/circuit.png'),
-          title: Text(heading),
+          title: Text("$heading",
+          style: const TextStyle(
+              color: KColors.primaryText,
+          ),),
           subtitle: Text(
             "$time \n$content",
             style: const TextStyle(

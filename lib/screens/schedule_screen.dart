@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:exun_app_21/constants.dart';
@@ -36,18 +37,24 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                        future: fetchSchedule(),
                        builder: (BuildContext context, AsyncSnapshot snapshot) {
                          if (snapshot.data != null) {
-                           return SafeArea(
-                             child: Container(
+                           return Container(
                                  child: SfCalendar(
                                    onTap: calendarTapped,
                                    view: CalendarView.schedule,
+                                   headerStyle: CalendarHeaderStyle(
+                                       textStyle: TextStyle(fontSize: 0)
+                                   ),
                                    scheduleViewSettings: ScheduleViewSettings(
-                                     appointmentItemHeight: 60,
+                                     appointmentTextStyle: TextStyle(
+                                       fontWeight: FontWeight.w700,
+                                       height: 1.5,
+                                       color: Colors.black
+                                     ),
+                                     appointmentItemHeight: 70,
                                      hideEmptyScheduleWeek: true,
                                    ),
                                    dataSource: ScheduleDataSource(snapshot.data),
                                  )
-                             ),
                            );
                          } else {
                            return Container(
@@ -127,6 +134,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
           Schedule y = b;
           return y.date.compareTo(x.date);
         });
+        _schedules.removeWhere((element) => element.date.isBefore(DateTime.now()));
       } catch (e) {
         _schedules = [];
         print("error");
@@ -156,10 +164,10 @@ class ScheduleDataSource extends CalendarDataSource {
     return _getSchedule(index).eventName;
   }
 
-  // @override
-  // Color getColor(int index){
-  //   return Color(0xFF2977f5); //todo: change colors
-  // }
+  @override
+  Color getColor(int index){
+    return Color(0xFFeaeaea); //todo: change colors
+  }
 
   String getContent(int index) {
     return _getSchedule(index).content;
