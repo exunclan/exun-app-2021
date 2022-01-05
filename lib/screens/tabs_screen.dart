@@ -1,3 +1,4 @@
+import 'package:exun_app_21/screens/schedule.dart';
 import 'package:exun_app_21/screens/schedule_screen.dart';
 
 import '../firebase_notification_handler.dart';

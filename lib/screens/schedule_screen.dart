@@ -1,11 +1,15 @@
 import 'dart:convert';
-
+import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:exun_app_21/constants.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:http/http.dart';
 
 import '../constants.dart';
@@ -18,6 +22,7 @@ class ScheduleScreen extends StatefulWidget {
 }
 
 List<Schedule> _schedules = <Schedule>[];
+DateTime start = DateTime(2022, 1, 14);
 
 class _ScheduleScreenState extends State<ScheduleScreen> {
   @override
@@ -32,31 +37,36 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
           onRefresh: () {
               return fetchSchedule();
                  }, child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 25.0),
+                      padding: EdgeInsets.symmetric(horizontal: 20.0),
                      child: FutureBuilder(
                        future: fetchSchedule(),
                        builder: (BuildContext context, AsyncSnapshot snapshot) {
                          if (snapshot.data != null) {
-                           return Container(
-                                 child: SfCalendar(
-                                   onTap: calendarTapped,
-                                   view: CalendarView.schedule,
-                                   headerStyle: CalendarHeaderStyle(
-                                       textStyle: TextStyle(fontSize: 0)
-                                   ),
-                                   scheduleViewSettings: ScheduleViewSettings(
-                                     appointmentTextStyle: TextStyle(
-                                       fontWeight: FontWeight.w700,
-                                       height: 1.5,
-                                       color: Colors.black
+                           return SafeArea(
+                                   child: SfCalendar(
+                                     onTap: calendarTapped,
+                                     view: CalendarView.schedule,
+                                     appointmentBuilder: appointmentBuilder,
+                                     headerStyle: CalendarHeaderStyle(
+                                         textStyle: TextStyle(fontSize: 0)
                                      ),
-                                     appointmentItemHeight: 70,
-                                     hideEmptyScheduleWeek: true,
-                                   ),
-                                   dataSource: ScheduleDataSource(snapshot.data),
-                                 )
+                                     // initialDisplayDate: DateTime(2022, 1, 14),
+                                     minDate: start,
+                                     scheduleViewSettings: ScheduleViewSettings(
+                                       // appointmentTextStyle: TextStyle(
+                                       //     fontWeight: FontWeight.w700,
+                                       //     height: 1.5,
+                                       //     color: Colors.black
+                                       // ),
+                                       appointmentItemHeight: 70,
+                                       hideEmptyScheduleWeek: true,
+                                     ),
+                                     dataSource: ScheduleDataSource(snapshot.data),
+                                   )
                            );
-                         } else {
+                         }
+
+                         else {
                            return Container(
                              child: Center(
                                child: Text(''),
@@ -68,6 +78,54 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
         ),
         ),
     );
+  }
+
+  Widget appointmentBuilder(BuildContext context,
+      CalendarAppointmentDetails calendarAppointmentDetails) {
+    final Schedule appointment =
+        calendarAppointmentDetails.appointments.first;
+    return Container(
+          width: calendarAppointmentDetails.bounds.width,
+          height: calendarAppointmentDetails.bounds.height / 2,
+          alignment: Alignment.centerLeft,
+            decoration: BoxDecoration(
+                border: Border.all(
+                    color: KColors.border,
+                    width: 1,
+                ),
+              borderRadius: BorderRadius.circular(8.0),
+              color: Color(0xFFfcfcfc),
+            ),
+                child: Padding(
+                  padding: EdgeInsets.all(15.0),
+                  child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                          appointment.eventName,
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            color: KColors.primaryText,
+                            fontWeight: FontWeight.w600,
+                          ),
+                      ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 7.0),
+                      child:
+                      Text(
+                        DateFormat.jm().format(appointment.date).toString(),
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w500,
+                          color: KColors.bodyText,
+                      ),
+                    ),
+                    ),
+                  ],
+                ),
+                )
+            );
   }
 
   void calendarTapped(CalendarTapDetails details) {
@@ -132,9 +190,14 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
         _schedules.sort((a, b) {
           Schedule x = a;
           Schedule y = b;
-          return y.date.compareTo(x.date);
+          return x.date.compareTo(y.date);
         });
         _schedules.removeWhere((element) => element.date.isBefore(DateTime.now()));
+        // print(_schedules.length);
+        // print(_schedules[0].eventName);
+        start = _schedules[0].date;
+        // print("start");
+        // print(start);
       } catch (e) {
         _schedules = [];
         print("error");
@@ -206,4 +269,5 @@ class Schedule {
   };
 
 }
+
 
