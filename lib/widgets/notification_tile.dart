@@ -18,8 +18,10 @@ class NotificationTile extends StatelessWidget {
     required this.content,
   }) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
+    String icon = "circuit";
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 38.0, vertical: 10.0),
       child: GestureDetector(
@@ -36,9 +38,10 @@ class NotificationTile extends StatelessWidget {
           );
         },
         child: ListTile(
-          leading: Image.asset('assets/circuit.png'),
+          leading: Image.asset('assets/$icon.png'),
           title: Text("$heading",
           style: const TextStyle(
+            fontSize: 16,
               color: KColors.primaryText,
           ),),
           subtitle: Text(

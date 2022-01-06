@@ -20,7 +20,7 @@ class AboutScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 38.0),
       child: Column(
         children: [
-          Image.asset('assets/logo.png', height: 54.0, width: 121.0),
+          Image.asset('assets/logo.png', width: 141.0),
           const SizedBox(height: 50.0),
           const Text(
             "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. text some more text lorem ipsum text.",

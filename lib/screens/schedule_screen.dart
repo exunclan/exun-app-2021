@@ -43,15 +43,36 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                        builder: (BuildContext context, AsyncSnapshot snapshot) {
                          if (snapshot.data != null) {
                            return SafeArea(
-                                   child: SfCalendar(
+                             child: Column(
+                               crossAxisAlignment: CrossAxisAlignment.start,
+                                   children: [
+                                      Padding(
+                                         padding: EdgeInsets.symmetric(horizontal: 14.0),
+                                         child:  Text(
+                                             "Upcoming:",
+                                             style: TextStyle(
+                                               fontSize: 17.0,
+                                               fontWeight: FontWeight.bold,
+                                               color: KColors.primaryText,
+                                             )
+                                       ),
+                                       ),
+                                     SfCalendar(
                                      onTap: calendarTapped,
                                      view: CalendarView.schedule,
                                      appointmentBuilder: appointmentBuilder,
+                                     firstDayOfWeek: 6,
+                                     // showWeekNumber: true,
+                                       weekNumberStyle:WeekNumberStyle(
+                                     // backgroundColor: Colors.blue,
+                                     textStyle: TextStyle(fontSize: 0)
+                         ),
                                      headerStyle: CalendarHeaderStyle(
                                          textStyle: TextStyle(fontSize: 0)
                                      ),
                                      // initialDisplayDate: DateTime(2022, 1, 14),
                                      minDate: start,
+                                     //todo: remove week header
                                      scheduleViewSettings: ScheduleViewSettings(
                                        // appointmentTextStyle: TextStyle(
                                        //     fontWeight: FontWeight.w700,
@@ -63,6 +84,8 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                                      ),
                                      dataSource: ScheduleDataSource(snapshot.data),
                                    )
+                                       ]
+                             )
                            );
                          }
 
@@ -84,48 +107,79 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
       CalendarAppointmentDetails calendarAppointmentDetails) {
     final Schedule appointment =
         calendarAppointmentDetails.appointments.first;
-    return Container(
-          width: calendarAppointmentDetails.bounds.width,
-          height: calendarAppointmentDetails.bounds.height / 2,
-          alignment: Alignment.centerLeft,
-            decoration: BoxDecoration(
-                border: Border.all(
-                    color: KColors.border,
-                    width: 1,
-                ),
-              borderRadius: BorderRadius.circular(8.0),
-              color: Color(0xFFfcfcfc),
-            ),
-                child: Padding(
-                  padding: EdgeInsets.all(15.0),
-                  child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                          appointment.eventName,
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            color: KColors.primaryText,
-                            fontWeight: FontWeight.w600,
-                          ),
-                      ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 7.0),
-                      child:
-                      Text(
-                        DateFormat.jm().format(appointment.date).toString(),
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w500,
-                          color: KColors.bodyText,
-                      ),
-                    ),
-                    ),
-                  ],
-                ),
-                )
-            );
+    return ListTile(
+      // leading: Image.asset('assets/circuit.png'),
+      title: Text(
+      appointment.eventName,
+        style: const TextStyle(
+          fontSize: 16,
+          color: KColors.primaryText,
+        ),),
+      subtitle: Text(
+        DateFormat.jm().format(appointment.date).toString(),
+        style: const TextStyle(
+          color: KColors.bodyText,
+          fontSize: 13.0,
+          overflow: TextOverflow.ellipsis,
+        ),
+      ),
+      isThreeLine: true,
+      shape: RoundedRectangleBorder(
+        side: const BorderSide(color: KColors.border, width: 1),
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+    );
+    // return Container(
+    //       width: calendarAppointmentDetails.bounds.width,
+    //       height: calendarAppointmentDetails.bounds.height / 2,
+    //       alignment: Alignment.topLeft,
+    //         decoration: BoxDecoration(
+    //             border: Border.all(
+    //                 color: KColors.border,
+    //                 width: 1,
+    //             ),
+    //           borderRadius: BorderRadius.circular(8.0),
+    //           color: Color(0xFFffffff),
+    //         ),
+    //             child: Padding(
+    //               padding: EdgeInsets.all(15.0),
+    //               child: Column(
+    //               // crossAxisAlignment: CrossAxisAlignment.center,
+    //               children: [
+    //                 // Text(
+    //                   //     appointment.eventName,
+    //                   //     textAlign: TextAlign.left,
+    //                   //     style: TextStyle(
+    //                   //       color: KColors.primaryText,
+    //                   //       fontSize: 16,
+    //                   //       // fontWeight: FontWeight.w600,
+    //                   //     ),
+    //                   // ),
+    //                 Padding(
+    //                   padding: EdgeInsets.only(top: 4.0),
+    //                   child:
+    //                   Text(
+    //                     DateFormat.jm().format(appointment.date).toString(),
+    //                     // textAlign: TextAlign.left,
+    //                     style: TextStyle(
+    //                       fontSize: 13,
+    //                       fontWeight: FontWeight.w500,
+    //                       color: KColors.bodyText,
+    //                   ),
+    //                 ),
+    //                 ),
+    //                 Text(
+    //                   appointment.eventName,
+    //                       // textAlign: TextAlign.left,
+    //                       // style: TextStyle(
+    //                       //   color: KColors.primaryText,
+    //                       //   fontSize: 16,
+    //                       // )
+    //                 )
+    //               ],
+    //             ),
+    //             )
+    //         );
   }
 
   void calendarTapped(CalendarTapDetails details) {
@@ -229,7 +283,7 @@ class ScheduleDataSource extends CalendarDataSource {
 
   @override
   Color getColor(int index){
-    return Color(0xFFeaeaea); //todo: change colors
+    return Color(0xFFffffff); //todo: change colors
   }
 
   String getContent(int index) {

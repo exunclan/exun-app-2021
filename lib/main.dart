@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Exun App 2021',
+      title: 'Exun App 2021-22',
       theme: ThemeData(
         fontFamily: "Trebuchet MS",
         primaryColor: KColors.blue,

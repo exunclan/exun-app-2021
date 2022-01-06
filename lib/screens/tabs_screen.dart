@@ -1,4 +1,3 @@
-import 'package:exun_app_21/screens/schedule.dart';
 import 'package:exun_app_21/screens/schedule_screen.dart';
 
 import '../firebase_notification_handler.dart';
@@ -29,7 +28,7 @@ class _TabsScreenState extends State<TabsScreen> {
   final List<Page> _pages = [
     Page(
       page: const HomeScreen(),
-      title: "Home",
+      title: "Notifications",
       icon: Icons.home,
     ),
     Page(
