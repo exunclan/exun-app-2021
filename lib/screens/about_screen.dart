@@ -66,7 +66,7 @@ class AboutScreen extends StatelessWidget {
                           fontSize: 14,
                         ),
                         recognizer: TapGestureRecognizer()
-                          ..onTap = () => onTapLaunch('https://exunclan.com')),
+                          ..onTap = () => onTapLaunch('https://exun.co/discord')),
                   ],
                 ),
               ),

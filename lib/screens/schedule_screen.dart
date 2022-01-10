@@ -42,8 +42,9 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                        future: fetchSchedule(),
                        builder: (BuildContext context, AsyncSnapshot snapshot) {
                          if (snapshot.data != null) {
-                           return SafeArea(
-                             child: Column(
+                           // return SafeArea(
+                           //   child:
+                             return Column(
                                crossAxisAlignment: CrossAxisAlignment.start,
                                    children: [
                                       Padding(
@@ -57,11 +58,12 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                                              )
                                        ),
                                        ),
+                                     Flexible(child:
                                      SfCalendar(
                                      onTap: calendarTapped,
                                      view: CalendarView.schedule,
                                      appointmentBuilder: appointmentBuilder,
-                                     firstDayOfWeek: 6,
+                                     firstDayOfWeek: 5,
                                      // showWeekNumber: true,
                                        weekNumberStyle:WeekNumberStyle(
                                      // backgroundColor: Colors.blue,
@@ -84,8 +86,9 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                                      ),
                                      dataSource: ScheduleDataSource(snapshot.data),
                                    )
-                                       ]
-                             )
+                                     )
+                                   ]
+                             // )
                            );
                          }
 
@@ -193,8 +196,11 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
           builder: (BuildContext context) {
             return AlertDialog(
               title: Container(child: new Text('$_subject')),
-              content: Container(
-                height: 145,
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                // height: 155,
                 child: Column(
                   children: <Widget>[
                     Row(
@@ -213,6 +219,8 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                     ),
                   ],
                 ),
+              ),
+            ]
               ),
               actions: <Widget>[
                 new FlatButton(
