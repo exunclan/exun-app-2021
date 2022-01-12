@@ -27,6 +27,9 @@ DateTime start = DateTime(2022, 1, 14);
 class _ScheduleScreenState extends State<ScheduleScreen> {
   @override
   Widget build(BuildContext context) {
+    if(start.isBefore(DateTime.now())){
+      start = DateTime.now();
+    }
     return FutureBuilder(
         future: fetchSchedule(),
         builder: (ctx, snapshot) => snapshot.connectionState == ConnectionState.waiting

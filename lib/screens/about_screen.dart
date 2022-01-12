@@ -18,12 +18,16 @@ class AboutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 38.0),
-      child: Column(
+        child: SingleChildScrollView(
+        child:Column(
         children: [
           Image.asset('assets/logo.png', width: 141.0),
-          const SizedBox(height: 50.0),
+          const SizedBox(height: 30.0),
           const Text(
-            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. text some more text lorem ipsum text.",
+            "Exun 2021-22 is the largest student-run event of its kind, being the latest iteration in our "
+                "series of flagship technology symposiums going back two decades. With Exun 2021, we're "
+                "international again—participants from all around the globe are coming together to "
+                "deeply investigate and celebrate the essence of technology.",
             style: TextStyle(
               color: KColors.bodyText,
               fontSize: 14.0,
@@ -72,8 +76,28 @@ class AboutScreen extends StatelessWidget {
               ),
             ],
           ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
+                  child: Image.asset(
+                    'assets/plaksha.png',
+                    height: 50,
+                  ),
+                ),
+                SizedBox(width: 20,),
+                Image.asset(
+                  'assets/codechef.png',
+                  height: 50,
+                ),
+              ]),
+            ),
         ],
       ),
+    ),
     );
   }
 }

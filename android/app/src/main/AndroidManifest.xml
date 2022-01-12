@@ -2,7 +2,7 @@
     package="com.exunclan.exun_app_21">
    <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="Exun '21-22"
+        android:label="Exun 2021-22"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
