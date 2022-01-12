@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>840508395225-a4ua97v7keekfhevhv63co872l92vc1v.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.840508395225-a4ua97v7keekfhevhv63co872l92vc1v</string>
+	<key>API_KEY</key>
+	<string>AIzaSyA9_5AJXG8rr9-v2v3oYTYy4eNLrn5fu6E</string>
+	<key>GCM_SENDER_ID</key>
+	<string>840508395225</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.exunclan.exunApp21</string>
+	<key>PROJECT_ID</key>
+	<string>flutterexun2021</string>
+	<key>STORAGE_BUCKET</key>
+	<string>flutterexun2021.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:840508395225:ios:7b2ba798ddf2d14f9338c8</string>
+</dict>
+</plist>
