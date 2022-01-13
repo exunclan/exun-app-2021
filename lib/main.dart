@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Exun App 2021-22',
       theme: ThemeData(
         fontFamily: "Trebuchet MS",
