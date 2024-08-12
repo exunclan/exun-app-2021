@@ -8,11 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:exun_app_21/constants.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:http/http.dart';
 
-import '../constants.dart';
 
 class ScheduleScreen extends StatefulWidget {
   const ScheduleScreen({Key? key}) : super(key: key);
@@ -226,10 +224,14 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
             ]
               ),
               actions: <Widget>[
-                new FlatButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
+                new TextButton(
+                       onPressed: () {
+                         Navigator.of(context).pop();
+                         },
+                // new FlatButton(
+                //     onPressed: () {
+                //       Navigator.of(context).pop();
+                //     },
                     child: new Text('close'))
               ],
             );

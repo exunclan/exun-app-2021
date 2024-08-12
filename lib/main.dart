@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         fontFamily: "Trebuchet MS",
         primaryColor: KColors.blue,
         textTheme: const TextTheme(
-          headline6: TextStyle(
+          titleLarge: TextStyle(
             color: KColors.primaryText,
             fontSize: 20.0,
             fontWeight: FontWeight.bold,

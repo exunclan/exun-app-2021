@@ -21,7 +21,7 @@ class NotificationDialog extends StatelessWidget {
           children: [
             Text(
               heading,
-              style: Theme.of(context).textTheme.headline6,
+              style: Theme.of(context).textTheme.titleLarge,
             ),
             subtitle == "" || subtitle == null
                 ? SizedBox(height: 0)
@@ -32,7 +32,7 @@ class NotificationDialog extends StatelessWidget {
                     subtitle!,
                     style: Theme.of(context)
                         .textTheme
-                        .subtitle2!
+                        .titleSmall!
                         .copyWith(color: KColors.bodyText),
                   ),
             SizedBox(height: 10.0),

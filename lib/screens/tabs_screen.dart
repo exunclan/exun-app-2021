@@ -68,7 +68,7 @@ class _TabsScreenState extends State<TabsScreen> {
       appBar: AppBar(
         title: Text(
           _pages[_selectedPageIndex].title,
-          style: Theme.of(context).textTheme.headline6,
+          style: Theme.of(context).textTheme.titleLarge,
         ),
         toolbarHeight: 100,
         backgroundColor: Colors.white,
